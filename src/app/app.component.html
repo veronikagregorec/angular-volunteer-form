@@ -1,62 +1,103 @@
-<h1>Volunteer Form</h1>
-
-<form [formGroup]="volunteerform" (ngSubmit)="onSubmit()">
-    <h2>Personal Information</h2>
-
-    <label for="firstname">Name</label>
-    <input type="text" formControlName="name" id="firstname"
-    [class.invalid]="
-        volunteerform.get('name')?.invalid &&
-        (volunteerform.get('name')?.dirty ||
-          volunteerform.get('name')?.touched ||
-          isSubmitted)
-      ">
-    <span *ngIf="volunteerform.get('name')?.hasError('required') &&
-        (volunteerform.get('name')?.dirty ||
-          volunteerform.get('name')?.touched ||
-          isSubmitted)" class="error">This field is required.</span>
-
-    <label for="phoneNumber">Phone Number</label>
-    <input type="text" formControlName="phoneNumber" id="phoneNumber" 
-    [class.invalid]="
-        volunteerform.get('phoneNumber')?.invalid &&
-        (volunteerform.get('phoneNumber')?.dirty ||
-          volunteerform.get('phoneNumber')?.touched ||
-          isSubmitted)
-      ">
-
-    <span *ngIf="volunteerform.get('phoneNumber')?.hasError('required') &&
-            (volunteerform.get('phoneNumber')?.dirty ||
-              volunteerform.get('phoneNumber')?.touched ||
-              isSubmitted)" class="error">This field is required.</span>
-
-    <label for="location">Select Preferred Location</label>
-    <select id="location" formControlName="preferredLocation" (change)="selectLocation($event)">
-        <option *ngFor="let loc of locations" [ngValue]="loc">{{loc}}</option>
-    </select>
-
-    <h2>Please select what animals you're comfortable working with, if any:
-        <div formGroupName="animals">
-            <label for="dogs">Dogs</label>
-            <input formControlName="dogs" type="checkbox" id="dogs">
-
-            <label for="cats">Cats</label>
-            <input formControlName="cats" type="checkbox" id="cats">
-
-            <label for="reptiles">Reptiles</label>
-            <input formControlName="reptiles" type="checkbox" id="reptiles">
-        </div>
-    </h2>
-
-    <h2>Refrence(s)</h2>
-
-    <div formArrayName="references" *ngFor="let ref of references.controls; let i = index">
-        <label for="email" placeholder="optional">Email</label>
-        <input [formControlName]="i" type="email" id="email" >
-
-    <button type="button" (click)="removeEmail(i)" id="remove_email">X</button>
+<div class="wrap">
+    <div class="title-div"> 
+        <h1>Volunteer Form</h1>
     </div>
 
-    <button type="button" (click)="addEmail()">Add another email</button>
-    <button id="apply_button">Submit</button>
-</form>
+    <div class="wrapInsideContent">
+        <form [formGroup]="volunteerform" (ngSubmit)="onSubmit()">
+            <div class="border">
+                
+                <h2>Personal Informations</h2>
+
+                <div class="column">
+                    <label for="name">Full name</label>
+                    <input type="text" formControlName="name" id="name" placeholder="John Doe" name="fullName"
+                        [class.invalid]="volunteerform.get('name')?.invalid &&
+                        (volunteerform.get('name')?.dirty ||
+                        volunteerform.get('name')?.touched)">
+
+                    <span *ngIf="volunteerform.get('name')?.hasError('required') &&
+                        (volunteerform.get('name')?.dirty ||
+                        volunteerform.get('name')?.touched)"
+                        class="error">Full name is required.
+                    </span>
+
+                    <span *ngIf="volunteerform.get('name')?.hasError('pattern') &&
+                        (volunteerform.get('name')?.dirty ||
+                        volunteerform.get('name')?.touched)" class="error">Only letters with full name and capital letter.
+                    </span>
+
+                    <label for="phoneNumber">Phone number</label>
+                    <input type="text" formControlName="phoneNumber" id="phoneNumber" placeholder="7775554321" name="phoneNumber"
+                        [class.invalid]="volunteerform.get('phoneNumber')?.invalid &&
+                        (volunteerform.get('phoneNumber')?.dirty ||
+                        volunteerform.get('phoneNumber')?.touched)">
+
+                    <span *ngIf="volunteerform.get('phoneNumber')?.hasError('required') &&
+                        (volunteerform.get('phoneNumber')?.dirty ||
+                        volunteerform.get('phoneNumber')?.touched)" 
+                        class="error">Phone number is required.
+                    </span>
+
+                    <span *ngIf="volunteerform.get('phoneNumber')?.hasError('pattern') &&
+                        (volunteerform.get('phoneNumber')?.dirty ||
+                        volunteerform.get('phoneNumber')?.touched)" class="error">Only numbers.
+                    </span>
+
+                    <label for="location">Select preferred location</label>
+                    <select id="location" formControlName="preferredLocation" (change)="selectLocation($event)" name="preferredLocation"
+                        [class.invalid]="volunteerform.get('preferredLocation')?.invalid &&
+                        (volunteerform.get('preferredLocation')?.dirty ||
+                        volunteerform.get('preferredLocation')?.touched)">
+
+                        <option *ngFor="let location of locations" [ngValue]="location">{{location}}</option>
+                    </select>
+
+                    <span *ngIf="volunteerform.get('preferredLocation')?.hasError('required') &&
+                        (volunteerform.get('preferredLocation')?.dirty ||
+                        volunteerform.get('preferredLocation')?.touched)" 
+                        class="error">Preferred location is required.
+                    </span>
+                </div>
+
+                <h3>Which animals do you want to work with?</h3>
+                    <div formGroupName="animals" class="animal">
+                        <div class="flex">
+                            <input formControlName="dogs" type="checkbox" id="dogs" name="dogs">
+                            <label for="dogs">Dogs</label><br>
+                        </div>
+
+                        <div class="flex">
+                            <input formControlName="cats" type="checkbox" id="cats" name="cats">
+                            <label for="cats">Cats</label><br>
+                        </div>
+
+                        <div class="flex">
+                            <input formControlName="rabbits" type="checkbox" id="rabbits" name="rabbits">
+                            <label for="rabbits">Rabbits</label>
+                        </div>
+                    </div>
+
+                <h3>E-mail(s)</h3>
+
+                <div formArrayName="references" *ngFor="let ref of references.controls; let i = index">
+                    <label for="email" placeholder="optional">E-mail</label><br>
+                    <input [formControlName]="i" type="email" id="email" placeholder="youremail@email.com" name="email"
+                        [class.invalid]="volunteerform.get('references')?.invalid &&
+                        (volunteerform.get('references')?.dirty ||
+                        volunteerform.get('references')?.touched)">
+
+                    <button type="button" (click)="removeEmail(i)" id="remove_email" class="x-btn">X</button>
+                </div>
+
+                <button type="button" (click)="addEmail()" class="addAnotherEmail">Add another e-mail</button><br>
+                
+                <div *ngIf="alertMessage" class="alertMessage">
+                    Volunteer form submitted succesfully
+                </div>
+
+                <button id="apply_button" class="submit" [disabled]="volunteerform.invalid">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
