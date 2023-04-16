@@ -1,0 +1,307 @@
+.wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.title-div{
+    background-color: #F3E8FF;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+alert{
+    background-color: aqua;
+}
+
+.wrapInsideContent {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding-top: 50px;
+    background: linear-gradient(to bottom right, var(--maroonColor), var(--darkPurple));
+    color: var(--blackColor);
+}
+
+.wrapInsideContent::before {
+    content: '';
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    bottom: -0.1vw;
+    left: -0.1vw;
+    right: -0.1vw;
+    top: -0.1vw;
+    background-size: 100% 90px;
+    background-position: 50% 0%;
+    background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.28 2.17" preserveAspectRatio="none"><path d="M0 .5c3.07.55 9.27-.42 16.14 0 6.88.4 13.75.57 19.14-.11V0H0z" fill="%23f3e8ff"/><path d="M0 1c3.17.8 7.29-.38 10.04-.55 2.75-.17 9.25 1.47 12.67 1.3 3.43-.17 4.65-.84 7.05-.87 2.4-.02 5.52.88 5.52.88V0H0z" opacity=".5" fill="%23f3e8ff"/><path d="M0 1.85c2.56-.83 7.68-.3 11.79-.42 4.1-.12 6.86-.61 9.58-.28 2.73.33 5.61 1.17 8.61 1 3-.19 4.73-.82 5.3-.84V.1H0z" opacity=".5" fill="%23f3e8ff"/></svg>');
+}
+
+.wrapInsideContent h2{
+    text-align: center;
+}
+
+h1{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+h2{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+h3{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.animal label{
+    padding-left: 10px;
+    font-size: 17px;
+}
+
+label{
+    font-size: 17px;
+}
+
+input[type=checkbox]{
+    width: 25px;
+    height: 25px;
+    accent-color: var(--maroonColor);
+    margin-bottom: 5px;
+}
+
+input[type=text], select, input[type=email] {
+    width: 100%;
+    height: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 400px;
+    outline: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    border: 1px soldi var(--whiteColor);
+    font-size: 17px;
+}
+
+select{
+    background-color: var(--whiteColor);
+}
+
+option {
+    font-size: 15px;
+}
+
+input[type=text]:focus, input[type=email]:focus{
+    text-align: center; 
+}
+
+input[type=email]{
+    width: 340px;
+}
+
+.x-btn{
+    width: 50px;
+    height: 35px;
+    margin-left: 10px;
+    font-weight: 500;
+    background-color: var(--whiteColor);
+    border: 1px solid var(--whiteColor);
+    border-radius: 5px;
+}
+
+.x-btn:hover{
+    background-color: var(--maroonColor);
+    border: 1px solid var(--maroonColor);
+    color: var(--whiteColor);
+    transition: all 0.5s ease-in;
+}
+
+.column{
+    display: flex;
+    justify-content: center !important;
+    flex-direction: column;
+    width: 400px !important;
+}
+
+.addAnotherEmail{
+    width: 200px;
+    height: 35px;
+    background-color: var(--maroonColor);
+    border: 1px solid var(--maroonColor);
+    color: var(--whiteColor);
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.addAnotherEmail:hover{
+    background-color: var(--blackColor);
+    color: var(--whiteColor);
+    border: 1px solid var(--blackColor);
+    border-radius: 5px;
+    transition: all 0.5s ease-in;
+}
+
+.submit{
+    width: 100px;
+    height: 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: var(--maroonColor);
+    border: 1px solid var(--maroonColor);
+    color: var(--whiteColor);
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.submit:hover {
+    background-color: var(--blackColor);
+    border: 1px solid var(--blackColor);
+    border-radius: 5px;
+    transition: all 0.5s ease-in;
+}
+
+.invalid {
+    border: 2px solid var(--redColor) !important;
+}
+
+.error {
+    color: var(--redColor);
+    margin: 5px 0 15px 0;
+}
+
+.border{
+    margin-top: 70px;
+    border: 1px solid white;
+    padding: 0 100px 0 100px;
+    border-radius:5px;
+    background-color: var(--lightPurpleColor);
+    margin-bottom: 50px;
+}
+
+.alertMessage{
+    margin-top: 15px;
+    background-color: var(--greenColor);
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .title-div{
+        height: 110px;
+    }
+
+    h1{
+        font-size: 25px;
+    }
+
+    h2{
+        font-size: 22px;
+    }
+
+    h3{
+        font-size: 17px;
+    }
+
+    label{
+        font-size: 15px;
+    }
+
+    .animal label {
+        padding-left: 10px;
+        font-size: 15px;
+    }
+
+    input[type=checkbox] {
+        width: 16px;
+        height: 16px;
+    }
+
+    .addAnotherEmail{
+        width: 150px;
+        font-size: 14px; 
+    }
+
+    .submit {
+        width: 100px;
+        font-size: 14px;
+    }
+
+    input[type=text],
+    select,
+    input[type=email] {
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .border {
+        padding: 0 30px 0 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .border {
+        padding: 0 10px 0 10px;
+    }
+
+    .x-btn{
+        height: 30px;
+    }
+
+    .animal label {
+        padding-left: 10px;
+        font-size: 14px;
+    }
+
+    input[type=checkbox] {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    input[type=text],
+    select,
+    input[type=email] {
+        width: 320px;
+    }
+
+    input[type=email] {
+        width: 260px;
+    }
+
+    .border {
+        margin-top: 60px;
+        padding: 0 10px 0 10px;
+        border-radius: 5px;
+        background-color: none;
+        margin-bottom: 50px;
+    }
+
+    .column {
+        display: flex;
+        justify-content: center !important;
+        flex-direction: column;
+        width: 320px !important;
+    }
+}
