@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -11,37 +11,36 @@ export class AppComponent implements OnInit {
 
   volunteerform: FormGroup;
 
-  isSubmitted = false;
+  alertMessage: boolean = false;
 
   constructor(private fb: FormBuilder) { }
 
   initilizeForm() {
+    let emailValidation = '[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'
+
     this.volunteerform = this.fb.group({
-      name: ["", Validators.required],
-      phoneNumber: ["", Validators.required],
-      preferredLocation: "",
+      name: ["", [Validators.required, Validators.pattern('[A-Z][a-z]* [A-Z][a-z]*')]],
+      phoneNumber: ["", [Validators.required, Validators.pattern('[0-9]*')]],
+      preferredLocation: ["", Validators.required],
       animals: this.fb.group({
-        dogs: false,
-        cats: false,
-        reptiles: false
+        dogs: [false, Validators.required],
+        cats: [false, Validators.required],
+        rabbits: [false, Validators.required]
       }),
-      references: this.fb.array([this.fb.control('', [Validators.email, Validators.required])])
+      references: this.fb.array([this.fb.control('', [Validators.email, Validators.required,  Validators.pattern(emailValidation)])])
     });
   }
-
+  
   onSubmit(): void{
-    console.log(this.volunteerform.value, this.volunteerform.invalid);
-    this.isSubmitted = true;
+    console.log(this.volunteerform.value);
     
     if (this.volunteerform.invalid) {
-        return;
+      return;
     }else{
       this.volunteerform.reset();
-      this.volunteerform.get('name')?.clearValidators();
-      this.volunteerform.get('name')?.updateValueAndValidity();
-      this.volunteerform.get('phoneNumber')?.clearValidators();
-      this.volunteerform.get('phoneNumber')?.updateValueAndValidity();
     }
+
+    this.alertMessage = true;
   }
 
   addEmail() {
@@ -54,7 +53,7 @@ export class AppComponent implements OnInit {
 
   selectLocation(event:any) {
     this.volunteerform.patchValue({
-      preferredLocation:event.target.value
+      preferredLocation: event.target.value
     })
   }
 
@@ -66,4 +65,3 @@ export class AppComponent implements OnInit {
     this.initilizeForm();
   }
 }
-
