@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scrollbar-width: auto;
+    scrollbar-color: var(--lightPurpleColor) var(--blackColor);
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--lightPurpleColor);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--blackColor);
+    border: 3px solid var(--lightPurpleColor);
+}
+
+:root{
+    --maroonColor: #5600b3;
+    --lightPurpleColor: #F3E8FF;
+    --darkPurple: #89375F;
+    --whiteColor: #fff;
+    --blackColor: #000;
+    --redColor: #ff0000;
+    --greenColor: #7FFFD4;
+}
+
+::selection{
+    background-color: var(--maroonColor);
+    color: var(--whiteColor);
+}
